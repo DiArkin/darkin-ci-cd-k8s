@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-ci-cd
+  labels:
+    app: hello-ci-cd
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello-ci-cd
+  template:
+    metadata:
+      labels:
+        app: hello-ci-cd
+    spec:
+      containers:
+        - name: hello-ci-cd
+          image: diarkin/hello-ci-cd-k8s:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 5000
